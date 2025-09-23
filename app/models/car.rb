@@ -16,11 +16,11 @@ class Car < ApplicationRecord
   validates :acceleration, numericality: true
   validates :autonomy, numericality: true
   validates :airbags, numericality: true
-  validates :ABS, inclusion: { in: [true, false] }
-  validates :traction_control, inclusion: { in: [true, false] }
+  validates :ABS, presence: true
+  validates :traction_control, presence: true
   validates :capacity, numericality: true
   validates :tank_capacity, numericality: true
   validates :consumption, numericality: true
-  validates :leather_seats, inclusion: { in: [true, false] }
+  validates :leather_seats, presence: true
   validates :serial_number, presence: true
 end

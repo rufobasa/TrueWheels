@@ -1,5 +1,5 @@
 class Message < ApplicationRecord
   belongs_to :chat
-  validates :role, presence: true, inclusion: { in: ["user", "assistant"] }
+  validates :role, presence: true
   validates :content, presence: true
 end
