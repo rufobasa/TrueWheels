@@ -1,28 +1,37 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" />
-</a>
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag "Logo fondo blanco.png", alt: "Logo", class:"navbar-logo me-2" %>
+    <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
+        <li class="nav-item active">
+          <%= link_to "Cars", "", class:"nav-link" %>
+        </li>
+        <% if user_signed_in? %>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
+            <%= link_to "Cars", "", class:"nav-link" %>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Messages</a>
+            <a class="nav-link" href="#">Sign in</a>
           </li>
           <li class="nav-item dropdown">
-            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/aleroby" alt="">
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Chats</a>
+              <a class="dropdown-item" href="#">Whishlist</a>
               <a class="dropdown-item" data-turbo-method="delete" href="#">Log out</a>
             </div>
           </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Log in", new_user_session_path, class:"nav-link" %>
+          </li>
+        <% end %>
           <!--li class="nav-item"-->
           <!--/li-->
       </ul>

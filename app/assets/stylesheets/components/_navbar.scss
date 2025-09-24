@@ -7,7 +7,14 @@
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-brand .navbar-logo{
+  height: 56px;      /* subí o bajá a gusto (48–64) */
+  width: auto;       /* mantiene la proporción */
+  display: block;
+  max-width: none;   /* por si .img-fluid le mete max-width:100% */
 }
 
+/* Responsive (si querés un poco más grande en desktop) */
+@media (min-width: 992px) {
+  .navbar-logo { height: 56px; }
+}
