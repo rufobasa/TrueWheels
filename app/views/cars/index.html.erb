@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <%= @cars.each do |car| %>
+      <% @cars.each do |car| %>
         <tr>
           <td><%= link_to car.car_model, car_path(car) %></td>
           <td><%=  car.brand %></td>
@@ -28,4 +28,4 @@
   </table>
 </div>
 
-<%= console %>
+

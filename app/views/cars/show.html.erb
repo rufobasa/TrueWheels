@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="card shadow">
+    <div class="row g-0">
+      <!-- Imagen -->
+      <div class="col-md-4">
+        <%= image_tag @car.image_url, class: "img-fluid rounded-start h-100 object-fit-cover", alt: "Foto de auto" %>
+      </div>
+
+      <!-- Datos -->
+      <div class="col-md-8">
+        <div class="card-body">
+          <div class="d-flex justify-content-evenly">
+            <h4 class="card-title mb-4 fs-1"><%= @car.car_model %></h4>
+            <h4 class="card-title mb-4 fs-1">Price:</h4>
+          </div>
+
+          <div class="row">
+            <!-- Columna 1 -->
+            <div class="col-md-6">
+              <p><strong>Brand:</strong> <%= @car.brand %></p>
+              <p><strong>Version:</strong> <%= @car.version %></p>
+              <p><strong>Year:</strong> <%= @car.year %></p>
+              <p><strong>Miles:</strong> <%= @car.miles %></p>
+              <p><strong>Color:</strong> <%= @car.color %></p>
+              <p><strong>Doors:</strong> <%= @car.doors %></p>
+              <p><strong>Fuel:</strong> <%= @car.fuel_type %></p>
+              <p><strong>Transmission:</strong> <%= @car.transmission %></p>
+              <p><strong>Body type:</strong> <%= @car.body_type %></p>
+              <p><strong>Displacement:</strong> <%= @car.displacement %></p>
+              <p><strong>Horse power:</strong> <%= @car.horse_power %></p>
+              <p><strong>Description:</strong> <%= @car.description %></p>
+              <p><strong>Traction control:</strong> <%= @car.traction_control %></p>
+            </div>
+
+            <!-- Columna 2 -->
+            <div class="col-md-6">
+              <p><strong>Torque:</strong> <%= @car.torque %></p>
+              <p><strong>Acceleration:</strong> <%= @car.acceleration %></p>
+              <p><strong>Autonomy:</strong> <%= @car.autonomy %></p>
+              <p><strong>Air bags:</strong> <%= @car.airbags %></p>
+              <p><strong>Tank capacity:</strong> <%= @car.tank_capacity %></p>
+              <p><strong>Consumption:</strong> <%= @car.consumption %></p>
+              <p><strong>Services:</strong> <%= @car.services %></p>
+              <p><strong>Occur accident:</strong> <%= @car.occur_accident %></p>
+              <p><strong>Serial number:</strong> <%= @car.serial_number %></p>
+              <p><strong>leather seats:</strong> <%= @car.leather_seats %></p>
+              <p><strong>capacity:</strong> <%= @car.capacity %></p>
+              <p><strong>ABS:</strong> <%= @car.ABS %></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
