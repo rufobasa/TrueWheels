@@ -1,0 +1,31 @@
+<div class="container shadow p-3 mt-3 rounded-5">
+  <h1 class="text-center">Lista de automoviles</h1>
+  <hr>
+
+  <table class="table table-striped table-bordered text-center">
+    <thead class="table-dark">
+      <tr>
+        <th>Model</th>
+        <th>Brand</th>
+        <th>Year</th>
+        <th>Milles</th>
+        <th>fuel</th>
+         <th>price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= @cars.each do |car| %>
+        <tr>
+          <td><%= link_to car.car_model, car_path(car) %></td>
+          <td><%=  car.brand %></td>
+          <td><%=  car.year %></td>
+          <td><%=  car.miles %></td>
+          <td><%=  car.fuel_type %></td>
+          <td><%=  car.price %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= console %>
