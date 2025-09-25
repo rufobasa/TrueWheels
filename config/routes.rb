@@ -2,7 +2,14 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  resources :cars, only: [:index, :show]
+  resources :cars, only: [:index, :show] do
+    resources :chats, only: [:create, :index]
+  end
+
+  resources :chats, only: [:show] do
+    resources :messages, only: [:create]
+  end
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
