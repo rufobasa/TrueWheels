@@ -1,2 +1,10 @@
 <h1>Chats#show</h1>
 <p>Find me in app/views/chats/show.html.erb</p>
+
+<%= simple_form_for [@chat, @message] do |f| %>
+  <%= f.input :content, placeholder: "Type a question..." %>
+  <%= f.submit "Ask", class: "btn btn-primary" %>
+<% end %>
+
+
+<%= console %>
