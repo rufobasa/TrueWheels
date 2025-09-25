@@ -1,10 +1,23 @@
 class ChatsController < ApplicationController
   def index
+    @user = current_user
+    @chat = Chat.new
   end
 
   def show
+    raise
+    @chat = Chat.find(params[:id])
+    @message = Message.new
   end
 
   def create
+    @chat = Chat.new(title: "untitled")
+    @chat.user_id = current_user.id
+
+    if @chat.save!
+      redirect_to chat_path(@chat)
+    else
+      render :index, status: :unprocessable_entity
+    end
   end
 end
