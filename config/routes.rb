@@ -2,10 +2,12 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  resources :cars, only: [:index, :show] do
+  resources :cars, only: [:index, :show]
+
+  resources :users, only: :show do
     resources :chats, only: [:create, :index]
   end
-
+  
   resources :chats, only: [:show] do
     resources :messages, only: [:create]
   end
