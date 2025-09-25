@@ -4,10 +4,8 @@ Rails.application.routes.draw do
 
   resources :cars, only: [:index, :show]
 
-  resources :users, only: :show do
-    resources :chats, only: [:create, :index]
-  end
-  
+  resources :chats, only: [:index, :create]
+
   resources :chats, only: [:show] do
     resources :messages, only: [:create]
   end
