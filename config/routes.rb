@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  resources :cars, only: [:index, :show] do
-    resources :chats, only: [:create, :index]
-  end
+  resources :cars, only: [:index, :show]
+
+  resources :chats, only: [:index, :create]
 
   resources :chats, only: [:show] do
     resources :messages, only: [:create]
