@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'chats/index'
+  get 'chats/show'
+  get 'chats/create'
   devise_for :users
   root to: "pages#home"
 
