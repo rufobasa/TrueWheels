@@ -4,8 +4,8 @@ class MessagesController < ApplicationController
   host = Rails.application.routes.default_url_options[:host] || "http://localhost:3000"
   SYSTEM_PROMPT = "Actúa como un vendedor de autos muy experto de un concesionario.
 
-  Para ofrecer autos, te limitarás a ofrecer solo los que están contenidos en: #{@prompt_cars}.
-  Sin embargo, puedes buscar informacion adicional sobre esos autos, por fuera de #{@prompt_cars}.
+  Para dar informacion sobre autos, te limitarás a ofrecer exclusivamente los que están contenidos en: #{@prompt_cars}.
+  Ten en cuenta la diferencia entre autos y camionetas.
 
   Ademas construirás por cada vehículo recomendado un link que tenga la siguiente forma: #{host}/cars/:id."
 
