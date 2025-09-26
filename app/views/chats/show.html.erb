@@ -4,53 +4,30 @@
     <h3><%= @chat.title %></h3>
   </div>
 
-<div class="container bg-whats mt-5 p-3 shadow overflow-hidden mx-auto rounded-4 shadow p-3 w-75">
-
-  <% @chat.messages.each do |message| %>
+    <div class="container bg-whats m-5 p-3 shadow overflow-hidden mx-auto my-4 w-75">
+    <% @chat.messages.each do |message| %>
       <% if message.role == "user" %>
-
-        <p><%= message.content %></p>
-      <% end %>
-    </div>
-  </div>
-  <div>
-    <div class="bg-white border px-3 pt-2 m-2 rounded">
-      <% if message.role == "assistant" %>
-        <%= raw(render_markdown(message.content)) %>
-      <% end %>
-    </div>
-  </div>
-  <% end %>
-</div>
-  <div class="container sticky-bottom bg-white p-3 shadow overflow-hidden mx-auto my-4 shadow p-4 w-75">
-    <%= simple_form_for [@chat, @message], html: { class:"sticky-bottom" } do |f| %>
-      <%= f.input :content, label:"Chat with AI Assitant", placeholder: "Tell me something" %>
-        <div class="d-flex justify-content-between mb-3">
-          <%= f.submit "Ask", class: "btn btn-primary rounded-4" %>
-          <%= link_to "Back to Chats", chats_path, class:"btn btn-primary rounded-4" %>
-
         <div class="d-flex justify-content-end">
           <div class="bg-chat border px-3 pt-2 m-2 rounded-pill">
             <p><%= message.content %></p>
           </div>
-      </div>
-  
+        </div>
       <% elsif message.role == "assistant" %>
-        <div class="d-flex justify-content-start"> 
+        <div class="d-flex justify-content-start">
           <div class="bg-white border px-3 pt-2 m-2 rounded-5">
-            <p><%= message.content %></p>
+            <%= raw(render_markdown(message.content)) %>
           </div>
         </div>
-      <% end %>  
-  <% end %>
-</div>
-
+      <% end %>
+    <% end %>
+  </div>
   <div class="container sticky-bottom bg-white p-3 shadow overflow-hidden mx-auto my-4 shadow p-3 w-75 rounded-4">
     <%= simple_form_for [@chat, @message], html: { class:"sticky-bottom" } do |f| %>
       <div class="d-flex">
-        <%= f.input :content, label:"Ask a question", placeholder: "Type a question..." %>
+        <%= f.input :content, label:"Ask a question", placeholder: "Type a question...", class: "" %>
         <%= f.submit "", class: "button-arrow" %>
-
       </div>
+        <%= link_to "Back to Chats", chats_path, class:"btn btn-primary rounded-4" %>
     <% end %>
   </div>
+</div>
