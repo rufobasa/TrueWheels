@@ -1,7 +1,7 @@
 
 <div class="container bg-warning-subtle m-5 p-3 shadow overflow-hidden mx-auto my-4 shadow p-3 w-75">
   <div class="d-flex justify-content-center mb-3">
-    <h3 class="fw-bold"><%= @chat.title %></h3>
+    <h3><%= @chat.title if @chat.title != "New Chat" %></h3>
   </div>
 
     <div class="container bg-whats m-5 p-3 shadow overflow-hidden mx-auto my-4 w-100">

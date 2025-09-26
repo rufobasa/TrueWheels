@@ -11,7 +11,7 @@ class ChatsController < ApplicationController
   end
 
   def create
-    @chat = Chat.new(title: "untitled")
+    @chat = Chat.new(title:"New Chat")
     @chat.user_id = current_user.id
 
     if @chat.save!

@@ -1,11 +1,13 @@
 class MessagesController < ApplicationController
 
   @prompt_cars = Car.all.map(&:attributes).to_json
+  host = Rails.application.routes.default_url_options[:host] || "http://localhost:3000"
+  SYSTEM_PROMPT = "Actúa como un vendedor de autos muy experto de un concesionario.
 
-  SYSTEM_PROMPT = "Seras un vendedor de autos experto y responderas al usuario
-  de acuerdo a la informacion contenida en: #{@prompt_cars}. Debes limitarte solo
-  a la información contenida en prompt_cars. Ademas construirás por cada vehículo
-  recomendado un link que tenga la siguiente forma: primero con el http:// y al final /cars/:id"
+  Para ofrecer autos, te limitarás a ofrecer solo los que están contenidos en: #{@prompt_cars}.
+  Sin embargo, puedes buscar informacion adicional sobre esos autos, por fuera de #{@prompt_cars}.
+
+  Ademas construirás por cada vehículo recomendado un link que tenga la siguiente forma: #{host}/cars/:id."
 
   # SYSTEM_PROMPT = seras un vendedor experto de autos, debes limitarte solo en la
   # informcacion contenida en este prompt. Ademas construiras por cada vehiculo
@@ -24,9 +26,13 @@ class MessagesController < ApplicationController
     @message.role = "user"
     @message.chat_id = @chat.id
     if @message.save
+      if @chat.title == "New Chat"
+        @chat.title = chat_title.content
+        @chat.save
+      end
       build_conversation_history
       response = @ruby_llm_chat.with_instructions(instructions).ask(@message.content)
-      # @chat.with_instructions(instructions).ask(@message.content)
+      # @chat.with_instructions(instructions).ask(@message.content)cha
       Message.create(role: "assistant", chat_id: @chat.id, content: response.content)
       redirect_to chat_path(@chat)
     else
@@ -41,6 +47,12 @@ class MessagesController < ApplicationController
     @chat.messages.each do |message|
       @ruby_llm_chat.add_message(role: message.role, content: message.content)
     end
+  end
+
+  def chat_title
+    message = @chat.messages.first.content
+    RubyLLM.chat.with_instructions("Genera un nombre descriptivo para un chat que no sea mas de 6 palabras.
+    El nombre tiene que ser una síntesis de lo contenido en #{message}").ask(@chat.messages.first)
   end
 
   def message_params
