@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
 
   @prompt_cars = Car.all.map(&:attributes).to_json
-  host = Rails.application.routes.default_url_options[:host] || "http://localhost:3000"
+  host = https"://true-wheels-d6fd7f4aeeb5.herokuapp.com"
   SYSTEM_PROMPT = "Actúa como un vendedor de autos muy experto de un concesionario.
 
   Para dar informacion sobre autos, te limitarás a ofrecer exclusivamente los que están contenidos en: #{@prompt_cars}.
