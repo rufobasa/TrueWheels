@@ -1,7 +1,9 @@
 class MessagesController < ApplicationController
 
   @prompt_cars = Car.all.map(&:attributes).to_json
-  SYSTEM_PROMPT = "seras un vendedor experto de autos, debes limitarte solo en la informcacion contenida en este prompt. Ademas construiras por cada vehiculo recomendado un link que tenga la siguiente forma: /cars/:id"
+  SYSTEM_PROMPT = "seras un vendedor experto de autos, debes limitarte solo en la
+  informcacion contenida en este prompt. Ademas construiras por cada vehiculo
+  recomendado un link que tenga la siguiente forma: https://true-wheels-d6fd7f4aeeb5.herokuapp.com/cars/"
 
   #@prompt_cars = @cars.map do |car|
     #"[#{car.id},#{car.brand},#{car.miles},#{car.color},#{car.acceleration},#{car.consumption},#{car.fuel_type},#{car.transmission},#{car.car_model},#{car.version},#{car.doors},#{car.body_type},#{car.airbags},#{car.tank_capacity},#{car.services}#{car.occur_accident},#{car.serial_number}]"

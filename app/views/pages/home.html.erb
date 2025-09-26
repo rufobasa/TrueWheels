@@ -9,7 +9,7 @@
 <div class="container mx-auto my-4 shadow p-3 w-90">
   <div class="cards">
     <% Car.all.each do |car| %>
-      <div class="card-category p-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+      <div class="card-category p-3" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
         url('<%= car.image_url %>')">
         <%= link_to "#{car.brand} #{car.car_model} #{car.year}", car_path(car), class: "text-white text-center text-decoration-none" %>
       </div>

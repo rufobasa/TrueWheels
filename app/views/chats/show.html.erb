@@ -1,14 +1,14 @@
-<div class="container m-3 p-3 shadow overflow-hidden">
+<div class="container bg-white m-5 p-3 shadow overflow-hidden mx-auto my-4 shadow p-3 w-75">
   <% @chat.messages.each do |message| %>
   <div class="d-flex justify-content-end">
-    <div class="bg-white px-3 pt-2 rounded-pill">
+    <div class="bg-light border px-3 pt-2 m-2 rounded-pill">
       <% if message.role == "user" %>
         <p><%= message.content %></p>
       <% end %>
     </div>
   </div>
   <div>
-    <div>
+    <div class="bg-white border px-3 pt-2 m-2 rounded">
       <% if message.role == "assistant" %>
         <p><%= message.content %></p>
       <% end %>
@@ -16,10 +16,12 @@
   </div>
   <% end %>
 </div>
+  <div class="container sticky-bottom bg-white p-3 shadow overflow-hidden mx-auto my-4 shadow p-3 w-75">
+    <%= simple_form_for [@chat, @message], html: { class:"sticky-bottom" } do |f| %>
+      <%= f.input :content, label:"Ask a question", placeholder: "Type a question..." %>
+      <%= f.submit "Ask", class: "btn btn-primary" %>
+    <% end %>
+  </div>
 
-  <%= simple_form_for [@chat, @message], html: { class:"sticky-bottom" } do |f| %>
-    <%= f.input :content, label:"Ask a question", placeholder: "Type a question..." %>
-    <%= f.submit "Ask", class: "btn btn-primary" %>
-  <% end %>
 
 <%#= console %>

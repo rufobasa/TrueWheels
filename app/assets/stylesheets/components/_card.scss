@@ -1,3 +1,19 @@
+.card-img-top {
+  height: 200px; /* Altura fija para las imágenes */
+  object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+}
+.card {
+  height: 100%; /* Asegura que todas las cards tengan la misma altura dentro de su fila */
+  display: flex;
+  flex-direction: column;
+}
+.card-body {
+  flex-grow: 1; /* Permite que el cuerpo de la card ocupe el espacio restante */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribuye el contenido y empuja el precio hacia abajo */
+}
+
 .card-trip {
   overflow: hidden;
   background: white;
@@ -74,11 +90,48 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
+.card-link-wrapper {
+  text-decoration: none; /* Quita el subrayado del enlace */
+  color: inherit;        /* Hereda el color del texto para no ser el azul por defecto */
+  display: block;        /* Hace que el enlace ocupe todo el ancho del col */
+  height: 100%;          /* Permite que el enlace estire la card al 100% de la altura del col */
+}
 
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
+}
+
+/* app/assets/stylesheets/custom.scss (o cars_details.scss) */
+
+/* Ejemplo: Si la card tiene una clase, úsala para mayor especificidad */
+.car-detail-card .car-detail-img {
+  height: 440px !important; /* El !important es último recurso, úsalo con precaución */
+  object-fit: cover;
+  width: 100%;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+
+.price-display-detail {
+  margin-bottom: 1.5rem; /* Espacio debajo del precio */
+}
+
+.price-display-detail .badge {
+  font-size: 2rem; /* Precio más grande para resaltar */
+  padding: 0.8rem 1.5rem; /* Más padding para el badge */
+}
+
+/* Opcional: Estilo para los textos dentro de la card */
+.car-detail-card p {
+  margin-bottom: 0.75rem; /* Espacio entre los párrafos de datos */
+  font-size: 1.05rem;
+}
+
+.car-detail-card p strong {
+  min-width: 150px; /* Asegura que las etiquetas "strong" tengan un ancho mínimo para alinear */
+  display: inline-block; /* Permite aplicar width a un elemento inline */
 }
 
 // Smallest device
