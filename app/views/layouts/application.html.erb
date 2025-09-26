@@ -20,7 +20,11 @@
       <%= yield %>
     </main>
 
-    <%= render "/shared/chat-button" %>
+    <% if user_signed_in? %>
+      <%= render "/shared/chat-button" %>
+    <% else %>
+      <%= "" %>
+    <% end %>
 
     <%= render "/shared/footer" %>
   </body>
