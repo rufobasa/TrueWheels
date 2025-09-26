@@ -1,6 +1,5 @@
 class Car < ApplicationRecord
-  has_many :chats, dependent: :destroy
-  has_many :users, through: :chats
+  has_many :users
   validates :brand, presence: true
   validates :car_model, presence: true
   validates :version, presence: true

@@ -1,55 +1,68 @@
-<div class="container">
-  <div class="card shadow">
-    <div class="row g-0">
-      <!-- Imagen -->
-      <div class="col-md-4">
-        <%= image_tag @car.image_url, class: "img-fluid rounded-start h-100 object-fit-cover", alt: "Foto de auto" %>
-      </div>
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8"> <%# Central column for car content %>
+      <div class="card shadow-lg car-detail-card shadow p-3">
+        <% if @car.image_url.present? %>
+          <img src="<%= @car.image_url %>" class="card-img-top car-detail-img" alt="<%= @car.brand %> <%= @car.car_model %>">
+        <% else %>
+          <img src="https://via.placeholder.com/800x450?text=No+Image+Available" class="card-img-top car-detail-img" alt="No image available">
+        <% end %>
 
-      <!-- Datos -->
-      <div class="col-md-8">
         <div class="card-body">
-          <div class="d-flex justify-content-between">
-            <h4 class="card-title mb-4 fs-1"><%= @car.car_model %></h4>
-            <h4 class="card-title mb-4 fs-1">Price:</h4>
-            <div class="d-block"><%= link_to "Back to Cars", cars_path, class:"btn btn-primary" %></div>
-          </div>
+          <h2 class="card-title text-center mb-4"><%= @car.brand %> <%= @car.car_model %></h2>
 
-          <div class="row">
-            <!-- Columna 1 -->
+          <% if @car.price.present? %>
+            <div class="price-display-detail text-center mb-4">
+              <span class="badge bg-success fs-4 p-3">$<%= number_with_delimiter(@car.price) %></span>
+            </div>
+          <% end %>
+
+          <hr>
+
+          <h4 class="mb-3">General Details</h4>
+          <div class="row mb-3">
             <div class="col-md-6">
-              <p><strong>Brand:</strong> <%= @car.brand %></p>
               <p><strong>Version:</strong> <%= @car.version %></p>
               <p><strong>Year:</strong> <%= @car.year %></p>
-              <p><strong>Miles:</strong> <%= @car.miles %></p>
               <p><strong>Color:</strong> <%= @car.color %></p>
               <p><strong>Doors:</strong> <%= @car.doors %></p>
-              <p><strong>Fuel:</strong> <%= @car.fuel_type %></p>
+              <p><strong>Fuel Type:</strong> <%= @car.fuel_type.capitalize %></p>
               <p><strong>Transmission:</strong> <%= @car.transmission %></p>
-              <p><strong>Body type:</strong> <%= @car.body_type %></p>
-              <p><strong>Displacement:</strong> <%= @car.displacement %></p>
-              <p><strong>Horse power:</strong> <%= @car.horse_power %></p>
-              <p><strong>Description:</strong> <%= @car.description %></p>
-              <p><strong>Traction control:</strong> <%= @car.traction_control %></p>
+              <p><strong>Body Type:</strong> <%= @car.body_type %></p>
             </div>
-
-            <!-- Columna 2 -->
             <div class="col-md-6">
-              <p><strong>Torque:</strong> <%= @car.torque %></p>
-              <p><strong>Acceleration:</strong> <%= @car.acceleration %></p>
-              <p><strong>Autonomy:</strong> <%= @car.autonomy %></p>
-              <p><strong>Air bags:</strong> <%= @car.airbags %></p>
-              <p><strong>Tank capacity:</strong> <%= @car.tank_capacity %></p>
-              <p><strong>Consumption:</strong> <%= @car.consumption %></p>
-              <p><strong>Services:</strong> <%= @car.services %></p>
-              <p><strong>Occur accident:</strong> <%= @car.occur_accident %></p>
-              <p><strong>Serial number:</strong> <%= @car.serial_number %></p>
-              <p><strong>leather seats:</strong> <%= @car.leather_seats %></p>
-              <p><strong>capacity:</strong> <%= @car.capacity %></p>
-              <p><strong>ABS:</strong> <%= @car.ABS %></p>
+              <p><strong>Miles:</strong> <%= number_with_delimiter(@car.miles) %></p>
+              <p><strong>Serial Number:</strong> <%= @car.serial_number %></p>
+              <p><strong>Displacement:</strong> <%= number_with_delimiter(@car.displacement) %> cc</p>
+              <p><strong>Horse Power:</strong> <%= number_with_delimiter(@car.horse_power) %></p>
+              <p><strong>Torque:</strong> <%= number_with_delimiter(@car.torque) %> Nm</p>
+              <p><strong>Acceleration (0-100 km/h):</strong> <%= @car.acceleration %> s</p>
+              <p><strong>Autonomy:</strong> <%= number_with_delimiter(@car.autonomy) %> km</p>
             </div>
           </div>
 
+          <hr>
+
+          <h4 class="mb-3">Additional Specifications</h4>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <p><strong>Airbags:</strong> <%= @car.airbags %></p>
+              <p><strong>ABS:</strong> <%= @car.ABS ? 'Yes' : 'No' %></p>
+              <p><strong>Traction Control:</strong> <%= @car.traction_control ? 'Yes' : 'No' %></p>
+              <p><strong>Capacity:</strong> <%= @car.capacity %> passengers</p>
+            </div>
+            <div class="col-md-6">
+              <p><strong>Tank Capacity:</strong> <%= @car.tank_capacity %> L</p>
+              <p><strong>Consumption:</strong> <%= @car.consumption %> L/100km</p>
+              <p><strong>Leather Seats:</strong> <%= @car.leather_seats ? 'Yes' : 'No' %></p>
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="text-center mt-4">
+            <%= link_to 'Back to car list', cars_path, class: 'btn btn-primary' %>
+          </div>
         </div>
       </div>
     </div>

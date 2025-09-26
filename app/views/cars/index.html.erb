@@ -1,31 +1,36 @@
-<div class="container shadow p-3 mt-3 rounded-5">
-  <h1 class="text-center">Lista de automoviles</h1>
-  <hr>
+<%# app/views/cars/index.html.erb %>
 
-  <table class="table table-striped table-bordered text-center">
-    <thead class="table-dark">
-      <tr>
-        <th>Model</th>
-        <th>Brand</th>
-        <th>Year</th>
-        <th>Milles</th>
-        <th>fuel</th>
-         <th>price</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @cars.each do |car| %>
-        <tr>
-          <td><%= link_to car.car_model, car_path(car) %></td>
-          <td><%=  car.brand %></td>
-          <td><%=  car.year %></td>
-          <td><%=  car.miles %></td>
-          <td><%=  car.fuel_type %></td>
-          <td><%=  car.price %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="container mt-5 shadow p-3">
+  <h1 class="mb-4 text-center">Find the car you are looking for</h1>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <% @cars.each do |car| %>
+      <div class="col">
+        <%# Envuelve TODA la card en un link_to %>
+        <%= link_to car_path(car), class: "card-link-wrapper" do %>
+          <div class="card shadow-sm h-100"> <%# Añadido h-100 para que la card ocupe 100% de altura %>
+            <% if car.image_url.present? %>
+              <img src="<%= car.image_url %>" class="card-img-top" alt="<%= car.brand %> <%= car.car_model %>">
+            <% else %>
+              <img src="https://via.placeholder.com/200x200?text=No+Image" class="card-img-top" alt="No image available">
+            <% end %>
+            <div class="card-body">
+              <div>
+                <h5 class="card-title"><%= car.brand %> <%= car.car_model %></h5>
+                <p class="card-text"><strong>Version:</strong> <%= car.version %></p>
+                <p class="card-text"><strong>Year:</strong> <%= car.year %></p>
+                <p class="card-text"><strong>Miles:</strong> <%= number_with_delimiter(car.miles) %></p>
+                <p class="card-text"><strong>Fuel Type:</strong> <%= car.fuel_type.capitalize %></p>
+                <p class="card-text"><strong>Transmission:</strong> <%= car.transmission %></p>
+              </div>
+            <% if car.price.present? %>
+              <div class="price-display d-flex justify-content-end">
+                <span class="badge bg-primary fs-5">$<%= number_with_delimiter(car.price) %></span>
+              </div>
+            <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-
