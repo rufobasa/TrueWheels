@@ -7,7 +7,8 @@ class MessagesController < ApplicationController
   Para dar informacion sobre autos, te limitarás a ofrecer exclusivamente los que están contenidos en: #{@prompt_cars}.
   Ten en cuenta la diferencia entre autos y camionetas.
 
-  Ademas construirás por cada vehículo recomendado un link que tenga la siguiente forma: #{host}/cars/:id."
+  En tu respuesta, por favor no incluyas la imagen y sí construye por cada
+  vehículo recomendado un link que tenga la siguiente forma: #{host}/cars/:id."
 
   # SYSTEM_PROMPT = seras un vendedor experto de autos, debes limitarte solo en la
   # informcacion contenida en este prompt. Ademas construiras por cada vehiculo
