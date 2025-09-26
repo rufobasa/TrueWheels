@@ -9,9 +9,9 @@
         <%= link_to car_path(car), class: "card-link-wrapper" do %>
           <div class="card shadow-sm h-100"> <%# Añadido h-100 para que la card ocupe 100% de altura %>
             <% if car.image_url.present? %>
-              <img src="<%= car.image_url %>" class="card-img-top" alt="<%= car.brand %> <%= car.car_model %>">
+             <%= image_tag(car.image_url, class: "card-img-top", alt: "#{car.brand} #{car.car_model}") %>
             <% else %>
-              <img src="https://via.placeholder.com/200x200?text=No+Image" class="card-img-top" alt="No image available">
+             <%= image_tag("https://via.placeholder.com/200x200?text=No+Image", class: "card-img-top", alt: "No image available") %>
             <% end %>
             <div class="card-body">
               <div>

@@ -3,7 +3,7 @@
     <div class="col-12 col-lg-8"> <%# Central column for car content %>
       <div class="card shadow-lg car-detail-card shadow p-3">
         <% if @car.image_url.present? %>
-          <img src="<%= @car.image_url %>" class="card-img-top car-detail-img" alt="<%= @car.brand %> <%= @car.car_model %>">
+          <%= image_tag(@car.image_url, class: "card-img-top car-detail-img", alt: "#{@car.brand} #{@car.car_model}") %>
         <% else %>
           <img src="https://via.placeholder.com/800x450?text=No+Image+Available" class="card-img-top car-detail-img" alt="No image available">
         <% end %>
