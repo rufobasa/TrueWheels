@@ -39,3 +39,6 @@ cars.each do |car_attributes|
 end
 
 puts "Seed de autos completado: #{Car.count} autos en total."
+
+
+

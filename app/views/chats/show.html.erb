@@ -23,11 +23,16 @@
   </div>
 </div>
 
-<div class="container sticky-bottom bg-warning-subtle p-3 shadow overflow-hidden mx-auto my-4 shadow p-3 w-75 rounded-4">
+<div class="container sticky-bottom bg-warning-subtle p-3 shadow mx-auto my-4 shadow p-3 w-75 rounded-4">
   <%= simple_form_for [@chat, @message], html: { class:"sticky-bottom" } do |f| %>
-    <div class="d-flex justify-content-between">
-      <%= f.input :content, label:"Ask a question", placeholder: "Type a question...", input_html: {class: "input-chat"} %>
-      <%= f.submit "", class: "button-arrow" %>
+    <div class="d-flex gap-2 align-items-end">
+      <div class="flex-grow-1">
+        <%= f.input :content,
+              label:"Ask a question",
+              placeholder: "Type a question...",
+              input_html: {class: "input-chat form-control"} %>
+      </div>
+        <%= f.submit "", class: "button-arrow flex-shrink-0" %>
     </div>
       <%= link_to "Back to Chats", chats_path, class:"btn btn-secondary rounded-4" %>
   <% end %>

@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
 
   @prompt_cars = Car.all.map(&:attributes).to_json
-  host = "https://true-wheels-d6fd7f4aeeb5.herokuapp.com"
+  #host = "https://true-wheels-d6fd7f4aeeb5.herokuapp.com"
   SYSTEM_PROMPT = "Actúa como un vendedor de autos muy experto de un concesionario.
 
   Para dar informacion sobre autos, te limitarás a ofrecer EXCLUSIVAMENTE los que están contenidos en: #{@prompt_cars}.
@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
 
   En tu respuesta, por favor no incluyas la imagen y sí construye por cada
   vehículo recomendado un link que tenga el nombre 'ver vehículo' y que tenga la
-  siguiente forma: #{host}/cars/:id."
+  siguiente forma: /cars/:id."
 
   # SYSTEM_PROMPT = seras un vendedor experto de autos, debes limitarte solo en la
   # informcacion contenida en este prompt. Ademas construiras por cada vehiculo
